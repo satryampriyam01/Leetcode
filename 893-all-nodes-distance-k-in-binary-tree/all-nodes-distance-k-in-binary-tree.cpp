@@ -61,12 +61,12 @@ public:
         while(k--)
         {
             int n=que2.size();
-            cout<<n<<endl;
+           // cout<<n<<endl;
             while(n--)
             {
                 int temp=que2.front();
                 que2.pop();
-                cout<<temp<<endl;
+               // cout<<temp<<endl;
                 if(k==0)
                 {
                     
@@ -91,7 +91,7 @@ public:
                 }
             }
 
-            cout<<endl;
+            //cout<<endl;
         }
 
 
