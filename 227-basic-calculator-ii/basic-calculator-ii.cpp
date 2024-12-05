@@ -13,7 +13,7 @@ public:
                 if(prevop == '+'){
                     res += prevval;
                     prevval = num;
-                    cout<<res<<" "<<prevval<<endl;
+                   // cout<<res<<" "<<prevval<<endl;
                 }else if(prevop == '-'){
                     res += prevval;
                     prevval = -num;
@@ -24,7 +24,7 @@ public:
                     prevval /= num;
                 }
 
-                cout<<prevval<<i<<endl;
+               // cout<<prevval<<i<<endl;
 
                 num = 0;
                 prevop = s[i];
