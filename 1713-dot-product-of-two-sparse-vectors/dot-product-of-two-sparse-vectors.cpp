@@ -22,14 +22,12 @@ public:
         int result=0;
         for(auto i:vec.amp)
         { 
-            for(auto j: this->amp)
+            if(this->amp[i.first]!=0)
             {
                 int r=0;
-                if(i.first==j.first)
-                {
-                    r=i.second*j.second;
-                }
-               //cout<<r<<endl;
+                
+                    r=i.second*this->amp[i.first];
+                
                result+=r;
             }
             
