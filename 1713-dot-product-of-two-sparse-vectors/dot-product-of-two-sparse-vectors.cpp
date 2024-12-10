@@ -14,10 +14,6 @@ public:
             } 
     }
 
-    int size()
-    {
-        return amp.size();
-    }
 
     
     // Return the dotProduct of two sparse vectors
