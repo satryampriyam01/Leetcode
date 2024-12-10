@@ -25,9 +25,7 @@ public:
             if(this->amp[i.first]!=0)
             {
                 int r=0;
-                
-                    r=i.second*this->amp[i.first];
-                
+                r=i.second*this->amp[i.first];
                result+=r;
             }
             
