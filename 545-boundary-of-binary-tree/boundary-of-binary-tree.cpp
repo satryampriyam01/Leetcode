@@ -16,6 +16,8 @@ vector<int> res;
 
 void helper_left(TreeNode* root)
 {
+    
+    
     if(!root)
     {
         return;
@@ -66,8 +68,6 @@ void helper_right(TreeNode* root)
         return ;
     }
 
-    
-    
     if(!root->right)
     {
         helper_right(root->left);
