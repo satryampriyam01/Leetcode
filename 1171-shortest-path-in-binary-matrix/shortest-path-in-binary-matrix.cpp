@@ -26,7 +26,7 @@ public:
                 que.pop();
                 int i=p.first;
                 int j=p.second;
-                cout<<i<<" "<<j<<endl;
+                //cout<<i<<" "<<j<<endl;
                 if(i==n-1 && j==m-1)
                 {
                     return k;
@@ -90,7 +90,7 @@ public:
                 }
             }
             k++;
-            cout<<k<<endl;
+           // cout<<k<<endl;
         }
 
 
