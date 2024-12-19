@@ -9,18 +9,18 @@ public:
         for(int i=0;i<n;i++)
         {
             r+=nums[i];
-            nums[i]=r%k;
+            r=r%k;
 
-            if(amp.find(nums[i])!=amp.end())
+            if(amp.find(r)!=amp.end())
             {
-                if(i-amp[nums[i]]>1)
+                if(i-amp[r]>1)
                 {
                     return 1;
                 }
             }
             else
             {
-                amp[nums[i]]=i;
+                amp[r]=i;
             }
         }
 
