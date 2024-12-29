@@ -1,28 +1,29 @@
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        int start=0;
-        int start2=0;
+        int en=m-1;
+        int en2=n-1;
+        int in=m+n-1;
 
-        while(start2<n && start<m)
+        while(in>-1 && en>-1 && en2>-1)
         {
-            if(nums1[start]>nums2[start2])
+            if(nums1[en]>nums2[en2])
             {
-                swap(nums1[start],nums2[start2]);
-                sort(nums2.begin(),nums2.end());
-              
+                nums1[in]=nums1[en--];
             }
             else
             {
-                start++;
+                nums1[in]=nums2[en2--];
             }
+            in--;
         }
 
-        while(start<m+n && start2<n)
+        while(in>-1 && en2>-1)
         {
-            nums1[start++]=nums2[start2++];
+            nums1[in]=nums2[en2];
+            in--;
+            en2--;
         }
-       
 
     }
 };
