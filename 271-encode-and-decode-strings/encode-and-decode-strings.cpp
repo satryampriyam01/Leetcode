@@ -22,7 +22,7 @@ public:
 
         for(int i=0,size=0;i<s.size();i+=size,size=0)
         {
-            while(isdigit(s[i]) && i<s.size())
+            while(isdigit(s[i]))
             {
                 size=size*10+(s[i++]-'0');
             }
