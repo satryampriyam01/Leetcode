@@ -9,12 +9,6 @@ public:
         }
         unordered_map<int,int> amp;
         sort(nums.begin(),nums.end());
-
-        for(int i=0;i<n;i++)
-        {
-            amp[nums[i]]=1;
-        }
-
         int result=0;
         int r=1;
         for(int i=0;i<n-1;i++)
