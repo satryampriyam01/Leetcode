@@ -30,8 +30,6 @@ public:
                 que.pop();
                  int i=p.first;
                  int j=p.second;
-                 //cout<<i<<" "<<j<<endl;
-                //cout<<i+1<<" "<<j<<" "<<n<<" "<<grid[i+1][j]<<endl;
                 if(i+1<n && grid[i+1][j]==1)
                 {
                     grid[i+1][j]=2;
