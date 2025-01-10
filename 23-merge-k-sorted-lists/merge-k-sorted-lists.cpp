@@ -18,10 +18,9 @@ ListNode * helper_merge(ListNode* left,ListNode* right)
     ListNode *head=new ListNode(-1);
     ListNode *temp=head;
 
-    while(left || right)
+    while(left && right)
     {
-        if(left && right)
-        {
+        
             if(left->val<right->val)
             {
                 temp->next=left;
@@ -32,25 +31,24 @@ ListNode * helper_merge(ListNode* left,ListNode* right)
                 temp->next=right;
                 right=right->next;
             }
-        }
-        else
-        {
-
-            if(left!=NULL)
-            {
-                temp->next=left;
-                left=left->next;
-            }
-
-            if(right!=NULL)
-            {
-                temp->next=right;
-                right=right->next;
-            }
-        }
 
         temp=temp->next;
     }
+
+
+            while(left!=NULL)
+            {
+                temp->next=left;
+                left=left->next;
+                 temp=temp->next;
+            }
+
+            while(right!=NULL)
+            {
+                temp->next=right;
+                right=right->next;
+                 temp=temp->next;
+            }
 
     return head->next;
 
