@@ -48,13 +48,11 @@ bool helper_dfsCycle(vector<vector<int>> &adj,int v)
 
         for(int i=0;i<n;i++)
         {
-            if(!vst[i])
+            if(!vst[i] && !helper_dfsCycle(adj,i))
             {
-                if(!helper_dfsCycle(adj,i))
-                {
-                    vector<int> r;
+                  vector<int> r;
                     return r;
-                }
+                
             }
         }
 
