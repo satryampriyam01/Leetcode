@@ -36,7 +36,7 @@ public:
                
                 count++;
                 slot--;
-                 cout<<count<<" "<<slot<<endl;
+                // cout<<count<<" "<<slot<<endl;
             }
 
             for(int i=0;i<v.size();i++)
