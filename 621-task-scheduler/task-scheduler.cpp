@@ -44,7 +44,7 @@ public:
                 pq.push(v[i]);
             }
             
-            cout<<count<<endl;
+            //cout<<count<<endl;
             result+=count;
             if(!pq.size())
             {
