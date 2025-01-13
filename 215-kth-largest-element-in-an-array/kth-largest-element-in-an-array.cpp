@@ -7,10 +7,17 @@ public:
         int n=nums.size();
         for(int i=0;i<n;i++)
         {
-            pq_min.push(nums[i]);
-            if(pq_min.size()>k)
+            if(pq_min.size()<k)
             {
-                pq_min.pop();
+                pq_min.push(nums[i]);
+            }
+            else if(pq_min.top()<nums[i])
+            {
+                pq_min.push(nums[i]);
+                if(pq_min.size()>k)
+                {
+                    pq_min.pop();
+                }
             }
         }
 
