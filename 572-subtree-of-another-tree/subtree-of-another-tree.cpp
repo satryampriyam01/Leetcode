@@ -45,7 +45,7 @@ bool isSameHelper(TreeNode* root,TreeNode*subRoot)
 
         if(!root || !subRoot)
         {
-            cout<<root<<" "<<subRoot<<endl;
+           // cout<<root<<" "<<subRoot<<endl;
             return false;
         }
 
