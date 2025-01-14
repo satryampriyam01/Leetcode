@@ -22,20 +22,17 @@ public:
         {
             return root;
         }
-
-        TreeNode *left=lowestCommonAncestor(root->left,p,q);
-        TreeNode *right=lowestCommonAncestor(root->right,p,q);
-
-        if(left && right)
+        if(root->val>p->val && root->val>q->val)
         {
-            return root;
-        }
-        if(left)
-        {
-            return left;
+            return lowestCommonAncestor(root->left,p,q);
         }
 
-        return right;
+       if(root->val<p->val && root->val<q->val)
+        {
+            return lowestCommonAncestor(root->right,p,q);
+        }
+
+        return root;
 
     }
 };
