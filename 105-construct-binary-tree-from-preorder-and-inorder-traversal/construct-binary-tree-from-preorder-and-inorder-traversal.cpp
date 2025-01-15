@@ -20,13 +20,13 @@ public:
             return NULL;
         }
 
+        TreeNode* root=new TreeNode(preorder[preSE]);
+
         if(preSE==preEN)
         {
-            TreeNode* root=new TreeNode(preorder[preSE]);
+            
             return root;
         }
-
-        TreeNode* root=new TreeNode(preorder[preSE]);
 
         int lef=inSE;
         while(lef<=inEN && inorder[lef]!=preorder[preSE])
