@@ -14,10 +14,10 @@ public:
 
 int helperGood(TreeNode* root,int val)
 {   
-    int goodNode=0;
+   // int goodNode=0;
     if(!root)
     {
-        return goodNode;
+        return 0;
     }
 
     int left=helperGood(root->left,max(val,root->val));
