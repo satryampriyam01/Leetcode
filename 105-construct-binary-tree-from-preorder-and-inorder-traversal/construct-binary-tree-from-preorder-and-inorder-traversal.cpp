@@ -36,7 +36,7 @@ public:
 
         int count=lef-inSE;
 
-        root->left=helper(preorder,preSE+1,preSE+count,inorder,inSE,lef-1);
+        root->left=helper(preorder,preSE+1,preSE+count,inorder,inSE,inSE+lef-1);
         root->right=helper(preorder,preSE+count+1,preEN,inorder,lef+1,inEN);
         
         return root;
