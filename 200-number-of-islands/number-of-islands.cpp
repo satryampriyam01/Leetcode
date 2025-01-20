@@ -2,27 +2,31 @@ class Solution {
 public:
 
 
-void helperDFS(vector<vector<char>>& grid, int i,int j)
+void helper_dfs(vector<vector<char>>& grid,int i,int j)
 {
-    if(i<0 || j<0 || i>grid.size()-1 || j>grid[0].size()-1)
+    if(i<0 || j<0 || i>=grid.size() || j>=grid[0].size())
     {
         return ;
     }
 
     if(grid[i][j]=='1')
     {
-        grid[i][j]=0;
-        helperDFS(grid,i+1,j);
-        helperDFS(grid,i-1,j);
-        helperDFS(grid,i,j-1);
-        helperDFS(grid,i,j+1);
+        grid[i][j]='0';
+        helper_dfs(grid,i-1,j);
+        helper_dfs(grid,i,j+1);
+        helper_dfs(grid,i+1,j);
+        helper_dfs(grid,i,j-1);
     }
 
-    return ;
+return ;
+    
 }
+
+
 
     int numIslands(vector<vector<char>>& grid) {
         
+
         int n=grid.size();
         int m=grid[0].size();
         int result=0;
@@ -34,10 +38,12 @@ void helperDFS(vector<vector<char>>& grid, int i,int j)
                 if(grid[i][j]=='1')
                 {
                     result++;
-                    helperDFS(grid,i,j);
+                    helper_dfs(grid,i,j);
                 }
             }
         }
+
+
         return result;
     }
 };
