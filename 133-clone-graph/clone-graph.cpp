@@ -28,8 +28,9 @@ public:
             return node; 
        }
 
-       unordered_map<Node*,Node*> amp;
+        unordered_map<Node*,Node*> amp;
         Node *head=new Node(1);
+        
         amp[node]=head;
         queue<Node*> que;
         que.emplace(node);
