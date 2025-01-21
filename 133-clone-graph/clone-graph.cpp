@@ -22,59 +22,52 @@ public:
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
-        
+
        if(!node)
        {
-        return node;
+            return node; 
        }
-        
-        unordered_map<Node*,Node*> amp;
 
+       unordered_map<Node*,Node*> amp;
         Node *head=new Node(1);
-
         amp[node]=head;
-
         queue<Node*> que;
         que.emplace(node);
 
-        vector<int> vst(10001);
-        
         while(que.size())
         {
-            Node* old=que.front();
-            vector<Node*> ngb=old->neighbors;
-
+            Node *oldNode=que.front();
+            Node *newNode=amp[oldNode];
+            
+            vector<Node*> ngb=oldNode->neighbors;
             que.pop();
-
-            Node *newNode=amp[old];
-            vector<Node*> newNeighbours;
+  
+            vector<Node*> newngb;
 
             for(int i=0;i<ngb.size();i++)
             {
-                Node* ngbOldNode=ngb[i];
-                Node* ngbNewNode=NULL;
-                
-                if(amp.find(ngbOldNode)==amp.end())
+                Node* oldngbNode=ngb[i];
+                Node* newngbNode=NULL;
+
+                if(amp.find(oldngbNode)==amp.end())
                 {
-                    ngbNewNode=new Node(ngbOldNode->val);
-                    amp[ngbOldNode]=ngbNewNode; 
-                    que.emplace(ngbOldNode);                
+                    newngbNode=new Node(oldngbNode->val);
+                    amp[oldngbNode]=newngbNode;
+                    que.emplace(oldngbNode);
                 }
                 else
                 {
-                    ngbNewNode=amp[ngbOldNode];
+                    newngbNode=amp[oldngbNode];   
                 }
-
-                    newNeighbours.push_back(ngbNewNode);
-
+                
+                newngb.push_back(newngbNode);
             }
-            newNode->neighbors=newNeighbours;
 
+           newNode->neighbors=newngb;
         }
 
 
-
         return head;
-        
+
     }
 };
