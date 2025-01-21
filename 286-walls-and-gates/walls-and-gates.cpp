@@ -36,14 +36,14 @@ public:
          
                 if(i+1<n && rooms[i+1][j]==2147483647)
                 {
-                    cout<<i+1<<" "<<j<<endl;
+                    //cout<<i+1<<" "<<j<<endl;
                     rooms[i+1][j]=min(res,rooms[i+1][j]);
                     que.push(make_pair(i+1,j));
                 }
 
                  if(i-1>-1 && rooms[i-1][j]==2147483647)
                 {
-                    cout<<i-1<<" "<<j<<endl;
+                    //cout<<i-1<<" "<<j<<endl;
                     rooms[i-1][j]=min(res,rooms[i-1][j]);
                     que.push(make_pair(i-1,j));
                 }
@@ -51,7 +51,7 @@ public:
 
                  if(j+1<m && rooms[i][j+1]==2147483647)
                 {
-                    cout<<i<<" "<<j+1<<endl;
+                   // cout<<i<<" "<<j+1<<endl;
                     rooms[i][j+1]=min(res,rooms[i][j+1]);
                     que.push(make_pair(i,j+1));
                 }
@@ -59,12 +59,12 @@ public:
 
                  if(j-1>-1 && rooms[i][j-1]==2147483647)
                 {
-                    cout<<i<<" "<<j-1<<endl;
+                   // cout<<i<<" "<<j-1<<endl;
                     rooms[i][j-1]=min(res,rooms[i][j-1]);
                     que.push(make_pair(i,j-1));
                 }
                 
-cout<<endl;
+//cout<<endl;
             }
 
             
