@@ -1,64 +1,64 @@
 class Solution {
 public:
 
-int vst[2005];
 vector<int> result;
+int vst[2005];
 
-bool helper_dfsCycle(vector<vector<int>> &adj,int v)
+
+bool helper_dfsCycle(vector<vector<int>>& adj,int V)
 {
-    if(vst[v]==1)
+
+    if(vst[V]==1)
     {
         return 1;
     }
 
-    if(vst[v]==-1)
+    if(vst[V]==-1)
     {
         return 0;
     }
 
-    vst[v]=-1;
+    vst[V]=-1;
 
-    for(int i=0;i<adj[v].size();i++)
+
+    for(int i=0;i<adj[V].size();i++)
     {
-        if(!helper_dfsCycle(adj,adj[v][i]))
+        if(!helper_dfsCycle(adj,adj[V][i]))
         {
-            return 0;
+            return -1;
         }
-       
+
     }
 
-    vst[v]=1;
-    result.push_back(v);
+    vst[V]=1;
+    result.push_back(V);
     return 1;
-
 }
 
-
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
-
-        int n=numCourses;
-        vector<vector<int>> adj(n);
+        
         memset(vst,0,sizeof(vst));
-        result.clear();
+        vector<vector<int>> adj(numCourses);
 
-        for(int i=0;i<prerequisites.size();i++)
+        int n=prerequisites.size();
+
+        for(int i=0;i<n;i++)
         {
             adj[prerequisites[i][1]].push_back(prerequisites[i][0]);
         }
 
-        for(int i=0;i<n;i++)
+
+        for(int i=0;i<numCourses;i++)
         {
-            if(!vst[i] && !helper_dfsCycle(adj,i))
+            if(!helper_dfsCycle(adj,i))
             {
-                  vector<int> r;
-                    return r;
-                
+                vector<int> result;
+                return result;
             }
+
         }
 
-        reverse(result.begin(),result.end());
-
-        return result;
-
+    reverse(result.begin(),result.end());
+    return result;
     }
 };
