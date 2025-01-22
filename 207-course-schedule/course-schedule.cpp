@@ -1,62 +1,60 @@
 class Solution {
 public:
+
 int vst[2005];
 
-bool helper_dfsCycle(vector<vector<int>> &adj,int v)
-{
-    if(vst[v]==1)
+    bool helper_dfsCycle(vector<vector<int>>& adj,int V)
     {
-        return 1;
-    }
-    if(vst[v]==-1)
-    {
-        return 0;
-    }
 
-    vst[v]=-1;
-    
-    for(int i=0;i<adj[v].size();i++)
-    {
-        if( !helper_dfsCycle(adj,adj[v][i]))
+        if(vst[V]==1)
+        {
+            return 1;
+        }
+
+        if(vst[V]==-1)
         {
             return 0;
         }
+
+        vst[V]=-1;
+
+        for(int i=0;i<adj[V].size();i++)
+        {
+            if(!helper_dfsCycle(adj,adj[V][i]))
+            {
+                return 0;
+            }
+        }
+
+        vst[V]=1;
+
+        return 1;
     }
-
-    vst[v]=1;
-    return 1;
-
-
-}
 
 
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-
-
+        
+        int n=prerequisites.size();
+        vector<vector<int>> adj(numCourses);
         memset(vst,0,sizeof(vst));
-        int n=numCourses;
 
-        vector<vector<int>> adj(n);
-
-        for(int i=0;i<prerequisites.size();i++)
+        for(int i=0;i<n;i++)
         {
             adj[prerequisites[i][1]].push_back(prerequisites[i][0]);
         }
 
 
-        for(int i=0;i<n;i++)
+
+        for(int i=0;i<numCourses;i++)
         {
-            if(!vst[i])
+            if(!helper_dfsCycle(adj,i))
             {
-                if(!helper_dfsCycle(adj,i))
-                {
-                    return 0;
-                }
+                return 0;
             }
         }
 
-        return 1;
 
-        
+return 1;
+
     }
 };
