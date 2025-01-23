@@ -14,8 +14,6 @@ public:
                 result.push_back(amp[target-nums[i]]-1);
                 result.push_back(i);
                 return result;
-                //cout<<amp[target-nums[i]]-1<<" "<<i<<endl;
-                //amp[target-nums[i]]=0;
             }
             else
             {
