@@ -3,7 +3,6 @@ public:
     string reorganizeString(string s) {
 
         priority_queue<pair<int,char>> pq;
-        
         int n=s.size();
         unordered_map<char,int> amp;
         for(int i=0;i<n;i++)
@@ -13,7 +12,6 @@ public:
 
         for(auto i:amp)
         {
-           // cout<<i.second<<endl;
             pq.push(make_pair(i.second,i.first));
         }
 
@@ -29,7 +27,6 @@ public:
         {
             char ch=pq.top().second;
             int r=pq.top().first-1;
-            //cout<<ch<<endl;
             str+=ch;
             pq.pop();
 
