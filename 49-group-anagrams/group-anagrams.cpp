@@ -12,12 +12,13 @@ public:
             amp[str].push_back(strs[i]);
         }
 
-    vector<vector<string>> answer;
+        vector<vector<string>> result;
         for(auto i:amp)
         {
-            vector<string> result=i.second;
-            answer.push_back(result);
+            result.push_back(i.second);
         }
-        return answer;
+
+        return result;
+        
     }
 };
