@@ -41,7 +41,7 @@ public:
         }
 
         string str;
-        cout<<start<<" "<<result_length<<endl;
+        //cout<<start<<" "<<result_length<<endl;
         for(int i=start;i<start+result_length;i++)
         {
             str+=s[i];
