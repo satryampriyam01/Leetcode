@@ -18,7 +18,7 @@ public:
         {
             int mid=(se+en)/2;
             int resulting_hr=0;
-          //  cout<<mid<<endl;
+
             for(int i=0;i<n;i++)
             {
                 if(mid>=piles[i])
