@@ -34,7 +34,7 @@ public:
 
             if(resulting_hr<=h && mid)
             {
-                cout<<resulting_hr<<" "<<mid<<endl;
+                //cout<<resulting_hr<<" "<<mid<<endl;
                 en=mid-1;
                 ans=min(mid,ans);
             }
