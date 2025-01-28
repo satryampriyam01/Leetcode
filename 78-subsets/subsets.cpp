@@ -5,7 +5,7 @@ public:
 void helper(vector<int> &nums,vector<int> &v,vector<vector<int>> &result)
 {
     result.push_back(v);
-    //cout<<v.size()<<endl;
+
     for(int i=0;i<nums.size();i++)
     {
         v.push_back(nums[i]);
