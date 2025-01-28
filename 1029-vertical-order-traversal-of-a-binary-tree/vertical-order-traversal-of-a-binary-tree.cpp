@@ -23,7 +23,7 @@ public:
         }
 
         amp[x].push(make_pair(y,root->val));
-        cout<<x<<" "<<y<<endl;
+       // cout<<x<<" "<<y<<endl;
         mini=min(x,mini);
         maxi=max(maxi,x);
 
