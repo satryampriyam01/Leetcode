@@ -18,7 +18,7 @@ bool helper(vector<vector<char>>& board, string &word,string str,int i,int j,int
     bool up=false;
     if(i-1>-1 && board[i-1][j]==word[k])
     {
-                char ch=board[i-1][j];
+                    char ch=board[i-1][j];
                     board[i-1][j]=-1;
                     up=helper(board,word,str+ch,i-1,j,k+1);
                     board[i-1][j]=ch;
