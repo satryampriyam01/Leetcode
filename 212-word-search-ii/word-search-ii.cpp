@@ -1,59 +1,60 @@
-class Solution {
-    struct TrieNode {
-        TrieNode *children[26];
+class Node{  //*** trie Node
+    public:
         string word;
-
-        TrieNode() : word("") {
-            for (int i = 0; i < 26; i++) {
-                children[i] = nullptr;
-            }
+        bool isTerminal;  
+        vector<Node*> next;
+        Node():next(26,NULL){
+            isTerminal = false; 
+            
         }
-    };
+};
+
+class Solution {
+    
+    void put(string &s,int si, Node* cur){ //** adds a word to the trie 
+            int a = s[si]-'a';    //*********** also stores the word at the terminal node
+            if(!cur->next[a]){
+            Node* newnode = new Node();
+            cur->next[a] = newnode;
+            }
+
+            if(si != s.size()-1){
+            put(s,si+1,cur->next[a]); }
+            else
+             { cur->next[a]->isTerminal = true;
+               cur->next[a]->word = s;
+              }
+      }
+
+void dfs(vector<vector<char>>& board,int i,int j,Node* t,set<string>& res,vector<vector<bool>>& visit){ 
+    if(i<0 || j<0 || i>=board.size() || j>= board[0].size())return; //** dfs call to search for word
+    char x = board[i][j]-'a';
+    t = t->next[x];
+    if(visit[i][j] || !t)return ;
+   
+    if(t->isTerminal)res.insert((t->word));
+    visit[i][j] = true;
+    dfs(board,i+1,j,t,res,visit);
+    dfs(board,i-1,j,t,res,visit);
+    dfs(board,i,j+1,t,res,visit);
+    dfs(board,i,j-1,t,res,visit);
+    visit[i][j]= false;
+}
 
 public:
-    vector<string> findWords(vector<vector<char>> &board, vector<string> &words) {
-        TrieNode *root = buildTrie(words);
-        vector<string> result;
-        for (int i = 0; i < board.size(); i++) {
-            for (int j = 0; j < board[0].size(); j++) {
-                dfs(board, i, j, root, result);
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        set<string> res;
+        Node* t = new Node();
+        for(string &s:words){
+            put(s,0,t);
+        }
+       vector<vector<bool>> visit(board.size(),vector<bool>(board[0].size(),false));
+        for(int i = 0 ;i<board.size();i++){
+            for(int j=0;j<board[0].size();j++){
+               dfs(board,i,j,t,res,visit);
             }
         }
-        return result;
-    }
-
-    /** Inserts a word into the trie. */
-    TrieNode *buildTrie(vector<string> &words) {
-        TrieNode *root = new TrieNode();
-        for (int j = 0; j < words.size(); j++) {
-            string word = words[j];
-            TrieNode *curr = root;
-            for (int i = 0; i < word.length(); i++) {
-                char c = word[i] - 'a';
-                if (curr->children[c] == nullptr) {
-                    curr->children[c] = new TrieNode();
-                }
-                curr = curr->children[c];
-            }
-            curr->word = word;
-        }
-        return root;
-    }
-
-    void dfs(vector<vector<char>> &board, int i, int j, TrieNode *p, vector<string> &result) {
-        char c = board[i][j];
-        if (c == '#' || !p->children[c - 'a']) return;
-        p = p->children[c - 'a'];
-        if (p->word.size() > 0) {
-            result.push_back(p->word);
-            p->word = "";
-        }
-
-        board[i][j] = '#';
-        if (i > 0) dfs(board, i - 1, j, p, result);
-        if (j > 0) dfs(board, i, j - 1, p, result);
-        if (i < board.size() - 1) dfs(board, i + 1, j, p, result);
-        if (j < board[0].size() - 1) dfs(board, i, j + 1, p, result);
-        board[i][j] = c;
+        vector<string> ans(res.begin(),res.end());
+       return ans;
     }
 };
