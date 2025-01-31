@@ -19,7 +19,7 @@ public:
             {
                 res++;
             }
-            cout<<res<<endl;
+           // cout<<res<<endl;
 
             prefix_sum[i]=res;
             
