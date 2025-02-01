@@ -11,31 +11,39 @@
  */
 class Solution {
 public:
-TreeNode *prev;
-int ans;
-void helperBST(TreeNode* root)
-{
-    if(!root)
+TreeNode* prev=NULL;
+    bool helper(TreeNode* root)
     {
-        return ;
+        if(!root)
+        {
+            return 1;
+        }
+
+        bool left=helper(root->left);
+
+        if(prev && prev->val>=root->val)
+        {
+            return 0;
+        }
+
+        prev=root;
+        bool right=helper(root->right);
+
+        return left*right;
     }
 
-    helperBST(root->left);
 
-    if(prev && prev->val>=root->val)
-    {
-        ans=0;
-        return;
-    }
-
-    prev=root;
-    helperBST(root->right);
-}
     bool isValidBST(TreeNode* root) {
-        ans=1;
-        prev=NULL;
+        
+        if(!root)
+        {
+            return 1;
+        }
 
-        helperBST(root);
-        return ans;
+        bool k=helper(root);
+
+
+        return k;
+
     }
 };
