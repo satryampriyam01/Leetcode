@@ -22,7 +22,6 @@ bool helper(TreeNode *root,TreeNode *root2)
 
     if(!root || !root2)
     {
-       // cout<<1<<endl;
         return false;
     }
     
