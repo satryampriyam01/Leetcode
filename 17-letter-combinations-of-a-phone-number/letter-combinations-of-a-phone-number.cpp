@@ -23,7 +23,6 @@ void helper(string &digits,int index, string str,vector<string> &result, vector<
                          "jkl", "mno", "pqrs", "tuv", "wxyz"};
         
         vector<string> result;
-        int index=0;
 
         helper(digits,0,"",result,mp);
 
