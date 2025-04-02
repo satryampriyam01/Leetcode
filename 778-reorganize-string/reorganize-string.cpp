@@ -43,7 +43,7 @@ public:
             
         }
 
-        cout<<prev_r<<endl;
+       // cout<<prev_r<<endl;
 
         if(prev_r>0)
         {
