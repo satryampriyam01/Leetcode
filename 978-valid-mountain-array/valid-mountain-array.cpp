@@ -1,29 +1,32 @@
 class Solution {
 public:
     bool validMountainArray(vector<int>& arr) {
-        
-        int n=arr.size();
-        int se=0;
-        while(se+1<n && arr[se]<arr[se+1])
-        {
-            se++;
-        }
 
-        if(se==n-1 || se==0)
+     int se=0;
+     int n=arr.size();
+     for(se;se+1<n;se++)
+     {
+        if(arr[se]>=arr[se+1])
         {
-            return 0;
+            break;
         }
+     }
 
-        while(se+1<n && arr[se]>arr[se+1])
-        {
-            se++;
-        }
-
-        if(se==n-1)
-        {
-            return 1;
-        }
-
+     if(se==0 || se==n-1)
+     {
         return 0;
+     }
+
+
+     for(se;se+1<n;se++)
+     {
+        if(arr[se+1]>=arr[se])
+        {
+            return false;
+        }
+     }
+
+     return true;
+
     }
 };
