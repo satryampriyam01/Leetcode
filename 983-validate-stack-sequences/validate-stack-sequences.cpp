@@ -18,7 +18,6 @@ public:
         {
             return 1;
         }
-        cout<<stk.size();
         return 0;
     }
 };
