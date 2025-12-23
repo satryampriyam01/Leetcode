@@ -36,7 +36,6 @@ public:
             {
                 if(word[se]!=abbr[i])
                 {
-                    cout<<"here"<<endl;
                     return 0;
                 }
                 else
@@ -53,8 +52,6 @@ public:
         {
             return 1;
         }
-        cout<<se<<" "<<i<<endl;
-        cout<<"Here2"<<endl;
         return 0;
 
     }
