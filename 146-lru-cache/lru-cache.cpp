@@ -1,81 +1,42 @@
 class LRUCache {
 public:
-class Node{
-        public:
-            int key, value;
-            Node* next, *prev;
-            Node(int key, int value){
-                this->key = key;
-                this->value = value;
-                next = NULL;
-                prev = NULL;
-            }
-    };
-    int capacity;
-    unordered_map<int, Node*>mp;
-
-    Node* head = new Node(-1, -1);
-    Node* tail = new Node(-1, -1);
-
-     void deleteNode(Node* node){
-        node->prev->next = node->next;
-        node->next->prev = node->prev;
-    }
-
-    void insertAtHead(Node* node){
-        Node* temp = head->next;
-        head->next = node;
-        node->prev = head; 
-
-        node->next = temp;
-        temp->prev = node;
-    }
+    unordered_map<int, pair<int, int>> mp;
+    int c;
+    deque<int> dq;
 
     LRUCache(int capacity) {
-         this->capacity = capacity;
-        head->next = tail;
-        tail->prev = head;
+        c = capacity;
     }
-    
+
     int get(int key) {
-        if(mp.find(key) == mp.end())
-            return -1;
-        else{
-            Node* currNode = mp[key];
-            deleteNode(currNode);
-            insertAtHead(currNode);
-            return currNode->value;
+        if (mp.count(key)) {
+            dq.push_back(key);
+            mp[dq.back()].second++;
+
+            while (mp.size() > c) {
+                mp[dq.front()].second--;
+                if (mp[dq.front()].second == 0) {
+                    mp.erase(dq.front());
+                }
+                dq.pop_front();
+            }
+
+            return mp[key].first;
         }
+        return -1;
     }
-    
+
     void put(int key, int value) {
-              if(mp.find(key) != mp.end()){
-            Node* currNode = mp[key];
-            currNode->value = value; 
-            deleteNode(currNode);
-            insertAtHead(currNode);
-        }
-        else{
-            Node* newNode = new Node(key, value);
-            if(mp.size() == capacity){
-                Node* todel = tail->prev;
-                mp.erase(todel->key);
-                deleteNode(tail->prev);
-                insertAtHead(newNode);
-                mp[key]  = newNode;
-                delete todel;
+        dq.push_back(key);
+        mp[key].first = value;
+        mp[key].second++;
+
+        while (mp.size() > c) {
+            mp[dq.front()].second--;
+            if (mp[dq.front()].second == 0) {
+                mp.erase(dq.front());
             }
-            else{
-                insertAtHead(newNode);
-                mp[key] = newNode;
-            }
+            dq.pop_front();
         }
     }
 };
-
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache* obj = new LRUCache(capacity);
- * int param_1 = obj->get(key);
- * obj->put(key,value);
- */
