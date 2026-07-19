@@ -3,9 +3,9 @@ public:
     int lengthOfLongestSubstring(string s) {
         
         int n=s.size();
-        int start=0;
-        int res=0;
         unordered_map<char,int> amp;
+        int res=0;
+        int start=0;
         for(int i=0;i<n;i++)
         {
             if(amp[s[i]]==0)
@@ -16,12 +16,13 @@ public:
             {
                 start=max(start,amp[s[i]]);
                 amp[s[i]]=i+1;
-                
             }
 
-            res=max(res,i+1-start);
+            res=max(res,i-start+1);
         }
 
         return res;
+
+        
     }
 };
