@@ -1,42 +1,55 @@
 class LRUCache {
 public:
-    unordered_map<int, pair<int, int>> mp;
-    int c;
-    deque<int> dq;
+unordered_map<int,pair<int,int>> amp;
+int c;
+deque<int> dq;
 
     LRUCache(int capacity) {
-        c = capacity;
+        c=capacity;
     }
-
+    
     int get(int key) {
-        if (mp.count(key)) {
+        if(amp.count(key))
+        {
             dq.push_back(key);
-            mp[dq.back()].second++;
+            amp[dq.back()].second++;
 
-            while (mp.size() > c) {
-                mp[dq.front()].second--;
-                if (mp[dq.front()].second == 0) {
-                    mp.erase(dq.front());
+            while(amp.size()>c)
+            {
+                amp[dq.front()].second--;
+                if(amp[dq.front()].second==0)
+                {
+                    amp.erase(dq.front());
                 }
                 dq.pop_front();
             }
-
-            return mp[key].first;
+            return amp[key].first;
         }
         return -1;
-    }
 
+
+    }
+    
     void put(int key, int value) {
         dq.push_back(key);
-        mp[key].first = value;
-        mp[key].second++;
+        amp[key].first=value;
+        amp[key].second++;
 
-        while (mp.size() > c) {
-            mp[dq.front()].second--;
-            if (mp[dq.front()].second == 0) {
-                mp.erase(dq.front());
+        while(amp.size()>c)
+        {
+            amp[dq.front()].second--;
+            if(amp[dq.front()].second==0)
+            {
+                amp.erase(dq.front());
             }
             dq.pop_front();
         }
     }
 };
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
